@@ -2,7 +2,7 @@
   "name": "express-members-only",
   "version": "0.0.0",
   "engines": {
-    "node": "17.3.0"
+    "node": "16.17.0"
   },
   "private": true,
   "scripts": {
