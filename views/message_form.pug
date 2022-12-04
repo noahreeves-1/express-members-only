@@ -1,0 +1,15 @@
+extends layout 
+
+block content
+    
+    div(class='message-wrapper flex justify-center py-10')
+        div(class="message-container p-4 bg-gray-800 rounded-md")
+            h1(class="text-2xl font-bold py-4 text-center")= title    
+            form(method="POST" action="" class="bg-teal-900 p-4 rounded-md flex flex-col items-center")
+                div(class="text-start pt-4")
+                    label(for="message_title" class="block") Title: 
+                    input#message_title(type='text' placeholder='Title' name='message_title' required="true" size=41 class='text-slate-600')
+                div(class="text-start pt-4")
+                    label(for="message_content" class="block") Message: 
+                    textarea#message_content(name='message_content' rows='3' cols='40' required="true" placeholder='Write your message here...' class='text-slate-600')
+                button(type="submit" class="py-4 mt-4 w-64 rounded-md border-2 border-white") Create

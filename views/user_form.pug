@@ -1,0 +1,41 @@
+extends layout
+
+block content 
+  div(class="sign-up-wrapper flex justify-center py-10")
+    div(class="sign-up-container p-4 bg-gray-800 rounded-md") 
+      h1(class="text-2xl font-bold py-4 text-center")= title
+      form(method="POST" action="" class="bg-teal-900 p-4 rounded-md")
+        div(class="text-start")
+          label(for='first_name' class='block') First Name: 
+          input#first_name.form-control(type='text' placeholder="John" name="first_name" required='true' value=(first_name === undefined ? "": first_name ) class='text-slate-600 w-64')
+        div(class="text-start pt-4")
+          label(for='last_name' class='block') Last Name: 
+          input#last_name.form-control(type='text' placeholder='Smith' name="last_name" required="true" value=(last_name === undefined ? "" : last_name) class='text-slate-600 w-64')
+        div(class="text-start pt-4")
+          label(for='username' class='block') Username: 
+          input#username.form-control(type='text' placeholder='c00lName' name='username' required='true' value=(username === undefined ? "" : username) class='text-slate-600 w-64')
+        div(class='text-start pt-4')
+          label(for='email' class="block") Email: 
+          input#email(type='email' placeholder='some@email.com' name='email' required="true" value=(email === undefined ? "" : email) class='text-slate-600 w-64')
+        div(class="text-start pt-4")
+          label(for='password' class='block') Password: 
+          input#password.form-control(type='password' name='password' required='true' pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$" class='text-slate-600 w-64')
+        div(class="text-start pt-4")
+          label(for='confirm_password' class='block') Confirm Password: 
+          input#confirm_password.form-control(type='password' name='confirm_password' required='true' class='text-slate-600 w-64')
+        if errors 
+          ul 
+            for error in errors 
+              li(class="text-red-500 text-sm")= error.msg
+        ul(class='py-4 text-sm text-slate-300')
+          li.pw-requirement At least 8 characters in length
+          li.pw-requirement At least 1 lowercase letter
+          li.pw-requirement At least 1 uppercase letter
+          li.pw-requirement At least 1 number
+          li.pw-requirement At least 1 special character
+        
+    
+        button.btn(type='submit' class="py-4 mt-4 w-64 rounded-md border-2 border-white") Create Account
+  div(class='flex justify-center gap-4 pb-12')
+    p Already have an Account?
+    a(href='/log-in' class="text-teal-700 font-extrabold") Log In

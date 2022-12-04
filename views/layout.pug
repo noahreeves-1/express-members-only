@@ -1,7 +1,26 @@
 doctype html
 html
   head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+  body(class="bg-gray-900 text-white font-josefin")
+    if user
+      nav(class="bg-gray-800 text-white flex justify-center")
+        a(href="/")
+          p(class="text-4xl font-bold py-4") Members Only
+        a(href="/log-out")
+          p(class="text-teal-700 text-center text-xl font-extrabold absolute right-5 top-5") Log Out
+        if !user.membership_status
+          a(href='/join')
+            p(class="text-teal-700 text-center text-xl font-extrabold absolute right-32 top-5") Become Member
+          
+    else
+      nav(class="bg-gray-800 text-white")
+        a(href="/")
+          p(class="text-center text-4xl font-bold py-4") Members Only
+          a(href="/sign-up" class="text-teal-700 text-center text-xl font-extrabold absolute right-5 top-5") Sign Up
+          a(href="/log-in" class="text-teal-700 text-center text-xl font-extrabold absolute right-32 top-5") Log In
+  block content

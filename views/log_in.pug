@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div(class="log-in-wrapper text-center py-10 flex justify-center")
+    div(class="log-in-container bg-gray-800 rounded-md p-4")
+      h1(class="text-2xl font-bold py-4")= title
+        
+      if message
+        p= message
+
+      form(method="POST" action="/log-in" class=" bg-teal-900 p-4 rounded-md")
+        div(class="text-start")
+          label(for='username' class="block") Username: 
+          input#username.form-control(type='text' placeholder="c00lName" name="username" required='true' class='text-black w-64')
+        div(class="py-4")
+          label(for='password' class="block text-start") Password: 
+          input#password.form-control(type='password' name="password" required = "true" class="text-black w-64")
+        button.btn(type='submit' class="py-4 mt-4 w-64 rounded-md border-2 border-white") Submit
+  div(class="flex justify-center gap-4")
+    p Need an Account?
+    a(href="/sign-up" class="text-teal-700 font-extrabold") Sign Up

@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+    h1(class="text-center font-bold text-2xl my-8") You want to be an admin?
+    if message 
+        h1(class="text-red-500 text-center")= message
+    form(method="POST" action="")
+        div(class="flex flex-col items-center my-4")
+            label(for="admin_code")
+            input#admin_code(type="text" name="admin_code" required="true" class="text-gray-800")
+            button(type="submit" class="py-4 px-8 bg-teal-700 my-4 rounded-md") Submit

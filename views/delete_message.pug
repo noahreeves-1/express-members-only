@@ -1,0 +1,8 @@
+extends layout 
+
+block content 
+    h1(class="text-center text-2xl font-bold my-8")= title
+    div(class="flex justify-center")
+        form(method="POST" action="" class="flex justify-between w-80")
+            button(type="submit" class="py-4 px-8 bg-teal-700 rounded-md") Yes. Delete
+            a(href="/" class="py-4 px-8") No

@@ -1,0 +1,10 @@
+extends layout 
+
+block content
+    div(class="flex justify-center")
+        form(method="POST" action="" class="bg-teal-900 p-8 my-12 rounded-md w-80 text-center")
+            label(for='secret_code' class="text-center text-2xl font-extrabold") Enter the Code
+            if message 
+                p(class="pt-4 text-red-500")= message
+            input#secret_code.form-control(type='text' placeholder="C3FPN34" name="secret_code" required='true' class='text-slate-600 w-64 mt-8')
+            button(type="submit" class="py-2 mt-8 bg-slate-400 w-28 rounded-md") Enter

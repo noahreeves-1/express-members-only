@@ -1,5 +1,37 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  if user
+    a(href='/create-message' class="flex justify-center")
+      p(class="bg-teal-700 text-white text-center text-xl font-extrabold py-8 my-5 w-60 rounded-md") Create Message
+    if user.membership_status
+      h1(class="text-center text-xl py-10") Welcome 
+        span(class="text-teal-500 font-bold") #{user.first_name}
+        span !
+      ul(class="flex flex-col items-center")
+        each message in allMessages
+          div(class="my-4 w-6/12 bg-gray-800 p-4 rounded-md")
+            li(class="font-bold text-xl") #{message.title}
+            li(class="my-4")= message.text
+            div(class="flex gap-4")
+              span(class="text-teal-500") #{message.user.name} 
+              span #{message.date}
+              if user.admin
+                a(href=`/delete-message/${message._id}` class="text-purple-500 ml-auto") Delete Message
+    else
+      ul(class="flex flex-col items-center")
+        each message in allMessages
+          div(class="my-4 w-6/12 bg-gray-800 p-4 rounded-md")
+            li(class="font-bold text-xl") #{message.title}
+            li(class="my-4")= message.text
+            span(class="text-teal-500") Anonymous
+            span  / #{message.date}
+  else 
+    ul(class="flex flex-col items-center")
+      each message in allMessages
+        div(class="my-4 w-6/12 bg-gray-800 p-4 rounded-md")
+          li(class="font-bold text-xl") #{message.title}
+          li(class="my-4")= message.text
+          span(class="text-teal-500") Anonymous
+          span  / #{message.date}
+    
